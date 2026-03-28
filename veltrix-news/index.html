@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Veltrix News - Your trusted source for breaking news, world events, technology, sports, and more. Stay informed with daily updates.">
+    <meta name="keywords" content="news, breaking news, world news, technology, sports, business, entertainment, health, science">
+    <meta name="author" content="Veltrix News">
+    <meta property="og:title" content="Veltrix News - Stay Informed">
+    <meta property="og:description" content="Your trusted source for breaking news and daily updates from around the world.">
+    <meta property="og:type" content="website">
+    <title>Veltrix News - Stay Informed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="top-bar-left">
+                <span class="current-date" id="currentDate"></span>
+            </div>
+            <div class="top-bar-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="#newsletter" class="subscribe-link"><i class="fas fa-envelope"></i> Subscribe</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="/" class="logo">
+                <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                <div class="logo-text">
+                    <span class="logo-name">VELTRIX</span>
+                    <span class="logo-sub">NEWS</span>
+                </div>
+            </a>
+            <div class="search-bar" id="searchBar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search news..." autocomplete="off">
+                <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="header-actions">
+                <button class="search-toggle" id="searchToggle" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="refresh-btn" id="refreshBtn" aria-label="Refresh news">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav" id="mainNav">
+        <div class="container">
+            <div class="nav-scroll">
+                <a href="#" class="nav-link active" data-category="general">
+                    <i class="fas fa-fire"></i> Top Stories
+                </a>
+                <a href="#" class="nav-link" data-category="world">
+                    <i class="fas fa-globe"></i> World
+                </a>
+                <a href="#" class="nav-link" data-category="nation">
+                    <i class="fas fa-flag"></i> U.S.
+                </a>
+                <a href="#" class="nav-link" data-category="business">
+                    <i class="fas fa-chart-line"></i> Business
+                </a>
+                <a href="#" class="nav-link" data-category="technology">
+                    <i class="fas fa-microchip"></i> Technology
+                </a>
+                <a href="#" class="nav-link" data-category="sports">
+                    <i class="fas fa-football-ball"></i> Sports
+                </a>
+                <a href="#" class="nav-link" data-category="entertainment">
+                    <i class="fas fa-film"></i> Entertainment
+                </a>
+                <a href="#" class="nav-link" data-category="health">
+                    <i class="fas fa-heartbeat"></i> Health
+                </a>
+                <a href="#" class="nav-link" data-category="science">
+                    <i class="fas fa-flask"></i> Science
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileOverlay">
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-header">
+                <span class="logo-name" style="color:var(--primary);">VELTRIX</span>
+                <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="mobile-menu-links">
+                <a href="#" data-category="general"><i class="fas fa-fire"></i> Top Stories</a>
+                <a href="#" data-category="world"><i class="fas fa-globe"></i> World</a>
+                <a href="#" data-category="nation"><i class="fas fa-flag"></i> U.S.</a>
+                <a href="#" data-category="business"><i class="fas fa-chart-line"></i> Business</a>
+                <a href="#" data-category="technology"><i class="fas fa-microchip"></i> Technology</a>
+                <a href="#" data-category="sports"><i class="fas fa-football-ball"></i> Sports</a>
+                <a href="#" data-category="entertainment"><i class="fas fa-film"></i> Entertainment</a>
+                <a href="#" data-category="health"><i class="fas fa-heartbeat"></i> Health</a>
+                <a href="#" data-category="science"><i class="fas fa-flask"></i> Science</a>
+            </div>
+            <div class="mobile-menu-footer">
+                <button class="theme-toggle-mobile" id="themeToggleMobile">
+                    <i class="fas fa-moon"></i> Dark Mode
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news" id="breakingNews">
+        <div class="container breaking-inner">
+            <span class="breaking-label"><i class="fas fa-bolt"></i> BREAKING</span>
+            <div class="ticker-wrap">
+                <div class="ticker" id="breakingTicker"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Loading State -->
+            <div class="loading-screen" id="loadingScreen">
+                <div class="loader">
+                    <div class="loader-icon"><i class="fas fa-bolt"></i></div>
+                    <p>Loading today's news...</p>
+                </div>
+            </div>
+
+            <!-- Category Title -->
+            <div class="category-header" id="categoryHeader">
+                <h1 id="categoryTitle">Top Stories</h1>
+                <p class="category-subtitle" id="categorySubtitle">Today's most important headlines</p>
+            </div>
+
+            <!-- Search Results Header -->
+            <div class="search-results-header" id="searchResultsHeader" style="display:none;">
+                <h2>Search Results for "<span id="searchQuery"></span>"</h2>
+                <button class="clear-search" id="clearSearch">Clear Search</button>
+            </div>
+
+            <!-- Featured / Hero Section -->
+            <section class="hero-section" id="heroSection"></section>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Main News Column -->
+                <div class="news-column" id="newsColumn"></div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Daily Briefing -->
+                    <div class="sidebar-card daily-briefing">
+                        <h3><i class="fas fa-calendar-day"></i> Daily Briefing</h3>
+                        <p class="briefing-date" id="briefingDate"></p>
+                        <div id="dailyBriefing"></div>
+                    </div>
+
+                    <!-- Trending Topics -->
+                    <div class="sidebar-card trending">
+                        <h3><i class="fas fa-arrow-trend-up"></i> Trending Now</h3>
+                        <div id="trendingTopics"></div>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="sidebar-card newsletter" id="newsletter">
+                        <div class="newsletter-icon"><i class="fas fa-paper-plane"></i></div>
+                        <h3>Daily News Digest</h3>
+                        <p>Get the top stories delivered to your inbox every morning.</p>
+                        <form id="newsletterForm" class="newsletter-form">
+                            <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+                            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                        </form>
+                        <div class="newsletter-success" id="newsletterSuccess" style="display:none;">
+                            <i class="fas fa-check-circle"></i>
+                            <p>You're subscribed! Check your inbox.</p>
+                        </div>
+                        <p class="newsletter-note">Free. No spam. Unsubscribe anytime.</p>
+                    </div>
+
+                    <!-- Most Read -->
+                    <div class="sidebar-card most-read">
+                        <h3><i class="fas fa-eye"></i> Most Read</h3>
+                        <div id="mostRead"></div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- More News Grid -->
+            <section class="more-news" id="moreNews">
+                <h2 class="section-title">More Stories</h2>
+                <div class="news-grid" id="moreNewsGrid"></div>
+                <div class="load-more-wrap">
+                    <button class="load-more-btn" id="loadMoreBtn">
+                        <i class="fas fa-plus"></i> Load More Stories
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-bell"></i>
+            <span id="toastMessage"></span>
+        </div>
+        <button class="toast-close" id="toastClose"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-name">VELTRIX</span>
+                            <span class="logo-sub">NEWS</span>
+                        </div>
+                    </div>
+                    <p>Your trusted source for breaking news, in-depth analysis, and daily updates from around the world. Delivering quality journalism since 2024.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <a href="#" data-category="world">World</a>
+                    <a href="#" data-category="business">Business</a>
+                    <a href="#" data-category="technology">Technology</a>
+                    <a href="#" data-category="sports">Sports</a>
+                    <a href="#" data-category="entertainment">Entertainment</a>
+                    <a href="#" data-category="health">Health</a>
+                    <a href="#" data-category="science">Science</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Advertise</a>
+                    <a href="#">Press</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="footerYear"></span> Veltrix News. All rights reserved.</p>
+                <p>Powered by trusted news sources worldwide.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/news-data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
